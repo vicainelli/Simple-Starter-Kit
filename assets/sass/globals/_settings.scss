@@ -1,0 +1,46 @@
+/* Colours */
+$white: #fff;
+
+/* REM Font sizing - http://blog.divshot.com/post/29552945105/useful-sass-mixins-for-responsive-design-font-sizing */
+@mixin font-size($size: 1, $line: $size * 1.5) {
+	font-size     : ($size * 16) + px;
+	line-height   : ($line * 16) + px;
+	font-size     : $size + rem;
+	line-height   : $line + rem;
+	}
+
+/* Define Media Queries - http://thesassway.com/intermediate/responsive-web-design-in-sass-using-media-queries-in-sass-32 */
+$break-small: 30em;
+$break-medium: 37.5em;
+$break-large: 48em;
+$break-xlarge: 64em;
+$break-xxlarge: 78.75em;
+
+@mixin respond-to($media) {
+	@if $media == small {
+		@media only screen and (min-width: $break-small) { @content; }
+		}
+
+	@else if $media == medium-screens {
+		@media only screen and (min-width: $break-medium) { @content; }
+		}
+
+	@else if $media == large-screens {
+		@media only screen and (min-width: $break-large) { @content; }
+		}
+
+	@else if $media == xlarge-screens {
+		@media only screen and (min-width: $break-xlarge) { @content; }
+		}
+
+	@else if $media == xxlarge-screens {
+		@media only screen and (min-width: $break-xxlarge) { @content; }
+		}
+	}
+
+/* Hover animation */
+@mixin link-hover {
+	-webkit-transition: all 0.3s ease 0s;
+	-moz-transition: all 0.3s ease 0s;
+	transition: all 0.3s ease 0s;
+	}

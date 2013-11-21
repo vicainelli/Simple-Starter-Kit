@@ -1,0 +1,47 @@
+/*
+	If we use Google fonts, import it here. Don't include the http bit then it's safe across secure too
+	@import url(//fonts.googleapis.com/css?family=Paytone+One|Roboto:400,400italic,700,700italic,900,500italic,500);
+*/
+
+* {
+	-webkit-text-size-adjust: none;
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+	}
+
+body {
+
+	}
+
+h1, h2, h3, h4, h5, h6 {
+	@include font-size(1.5, 1.75);
+	}
+
+p {
+
+	}
+
+a {
+	@include link-hover;
+
+	&:hover {
+
+		}
+	}
+
+strong, b {
+	font-weight: bold;
+	}
+
+.small {
+	@include font-size(.75, 1.25);
+	}
+
+cite {
+
+	}
+
+pre, code {
+
+	}
+
