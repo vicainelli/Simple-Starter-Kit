@@ -1,7 +1,21 @@
-/* Colours */
+/*
+
+    MIXINS AND VARIABLES
+    ====================
+
+    All mixins and variables live here. Where possible, please include
+    a source link if they're written by someone else along with an
+    indication of how they should be used in the css files.
+
+*/
+
+
+
+/* Colour Palette */
 $white: #fff;
 
 /* REM Font sizing - http://blog.divshot.com/post/29552945105/useful-sass-mixins-for-responsive-design-font-sizing */
+// Use: @include font-size(1,1.5);
 @mixin font-size($size: 1, $line: $size * 1.5) {
 	font-size     : ($size * 16) + px;
 	line-height   : ($line * 16) + px;
@@ -9,38 +23,73 @@ $white: #fff;
 	line-height   : $line + rem;
 	}
 
-/* Define Media Queries - http://thesassway.com/intermediate/responsive-web-design-in-sass-using-media-queries-in-sass-32 */
-$break-small: 30em;
-$break-medium: 37.5em;
-$break-large: 48em;
-$break-xlarge: 64em;
-$break-xxlarge: 78.75em;
+/* Define Media Queries - http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/ */
+// Use: @include bp-s {};
+@mixin bp-s {
+    @media only screen and (max-width: 30em) { @content; }
+    }
 
-@mixin respond-to($media) {
-	@if $media == small {
-		@media only screen and (min-width: $break-small) { @content; }
-		}
+@mixin bp-m {
+    @media only screen and (max-width: 37.5em) { @content; }
+    }
 
-	@else if $media == medium-screens {
-		@media only screen and (min-width: $break-medium) { @content; }
-		}
+@mixin bp-l {
+    @media only screen and (max-width: 48em) { @content; }
+    }
 
-	@else if $media == large-screens {
-		@media only screen and (min-width: $break-large) { @content; }
-		}
+@mixin bp-xl {
+    @media only screen and (max-width: 64em) { @content; }
+    }
 
-	@else if $media == xlarge-screens {
-		@media only screen and (min-width: $break-xlarge) { @content; }
-		}
-
-	@else if $media == xxlarge-screens {
-		@media only screen and (min-width: $break-xxlarge) { @content; }
-		}
-	}
+@mixin bp-xxl {
+    @media only screen and (max-width: 78.75em) { @content; }
+    }
 
 /* Hover animation */
+// Use: @include link-hover;
 @mixin link-hover {
 	-webkit-transition: all 0.3s ease 0s;
 	-moz-transition: all 0.3s ease 0s;
 	transition: all 0.3s ease 0s;
 	}
+
+/* Gradient */
+// Use: @include gradient(#f36,#f60);
+@mixin gradient($from, $to) {
+    background:         -webkit-gradient(linear, left top, left bottom, from($from), to($to));
+    background:         -moz-linear-gradient(top,  $from, $to);
+    background-image:   -ms-linear-gradient(top, $from, $to);
+    background-image:   -o-linear-gradient(top, $from, $to);
+    -ms-filter:         "progid:DXImageTransform.Microsoft.gradient(startColorStr='$from', EndColorStr='$to')";
+    filter:             progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$from}', endColorstr='#{$to}');
+    }
+
+/* Clearfix http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/ */
+// Use: @extend %clearfix;
+%clearfix {
+    *zoom: 1;
+
+    &:before {
+        content: " ";
+        display: table;
+        }
+
+    &:after {
+        content: " ";
+        display: table;
+        clear: both;
+        }
+    }
+
+/* Visually hide element http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/ */
+// Use: @extend %visuallyhidden;
+%visuallyhidden {
+    margin: -1px;
+    padding: 0;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip: rect(0, 0, 0, 0);
+    position: absolute;
+    }

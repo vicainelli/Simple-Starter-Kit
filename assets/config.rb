@@ -6,7 +6,6 @@ css_dir = "css"
 sass_dir = "sass"
 images_dir = "img"
 javascripts_dir = "scripts"
-fonts_dir = "fonts"
 
 output_style = :compressed
 
@@ -15,7 +14,6 @@ relative_assets = true
 # To disable debugging comments that display the original location of your selectors. Uncomment:
 # line_comments = false
 color_output = false
-
 
 # If you prefer the indented syntax, you might want to regenerate this
 # project again passing --syntax sass, or you can uncomment this:

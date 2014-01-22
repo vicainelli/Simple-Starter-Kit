@@ -1,4 +1,12 @@
-/* 01 START : Global reset styles */
+/*
+
+    GLOBAL RESETS
+    =============
+
+    Standard reset styles and a few extra bits and pieces including
+    setting border-box on all elements.
+
+*/
 html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, dialog, figure, footer, header, hgroup, menu, nav, section, time, mark, audio, video {
   margin: 0;
   padding: 0;
@@ -77,46 +85,43 @@ hr {
 [type=submit] {
   cursor: pointer; }
 
-/* 01 END : Global reset styles */
-/* Colours */
-/* REM Font sizing - http://blog.divshot.com/post/29552945105/useful-sass-mixins-for-responsive-design-font-sizing */
-/* Define Media Queries - http://thesassway.com/intermediate/responsive-web-design-in-sass-using-media-queries-in-sass-32 */
-/* Hover animation */
 * {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  -webkit-text-size-adjust: none;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility; }
 
-html {
-  font-size: 100%; }
+/*
 
-body {
-  padding: 0;
-  margin: 0 auto;
-  width: 100%;
-  font-size: 16px;
-  line-height: 24px;
-  font-size: 1rem;
-  line-height: 1.5rem; }
+    MIXINS AND VARIABLES
+    ====================
 
-ul, ol {
-  margin: 0 0 1.5em 1.5em; }
+    All mixins and variables live here. Where possible, please include
+    a source link if they're written by someone else along with an
+    indication of how they should be used in the css files.
 
-img,
-a img {
-  max-width: 100%; }
-
-[type=submit] {
-  cursor: pointer; }
-
+*/
+/* Colour Palette */
+/* REM Font sizing - http://blog.divshot.com/post/29552945105/useful-sass-mixins-for-responsive-design-font-sizing */
+/* Define Media Queries - http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/ */
+/* Hover animation */
+/* Gradient */
+/* Clearfix http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/ */
+/* Visually hide element http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/ */
 /*
 	If we use Google fonts, import it here. Don't include the http bit then it's safe across secure too
 	@import url(//fonts.googleapis.com/css?family=Paytone+One|Roboto:400,400italic,700,700italic,900,500italic,500);
 */
-* {
-  -webkit-text-size-adjust: none;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility; }
+html {
+  font-size: 100%; }
+
+body {
+  font-size: 16px;
+  line-height: 24px;
+  font-size: 1rem;
+  line-height: 1.5rem; }
 
 h1, h2, h3, h4, h5, h6 {
   font-size: 24px;
@@ -128,6 +133,11 @@ a {
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s; }
+  a:hover, a:active {
+    outline: 0; }
+
+a:focus {
+  outline: thin dotted; }
 
 strong, b {
   font-weight: bold; }
@@ -137,3 +147,110 @@ strong, b {
   line-height: 20px;
   font-size: 0.75rem;
   line-height: 1.25rem; }
+
+pre, code {
+  font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal; }
+
+/*
+
+    GENEAL FORM STUFF
+    =================
+
+    This is more reset based stuff, if you've got a specific form, it would be
+    best to create it as a partial scss file and import it to screen.scss
+
+*/
+form {
+  margin: 0; }
+
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em; }
+
+legend {
+  border: 0;
+  padding: 0;
+  white-space: normal;
+  *margin-left: -7px; }
+
+button,
+input,
+select,
+textarea {
+  font-size: 100%;
+  margin: 0;
+  vertical-align: baseline;
+  *vertical-align: middle; }
+
+button,
+input {
+  line-height: normal; }
+
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+  *overflow: visible; }
+
+button[disabled],
+input[disabled] {
+  cursor: default; }
+
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  padding: 0;
+  *height: 13px;
+  *width: 13px; }
+
+input[type="search"] {
+  -webkit-appearance: textfield;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box; }
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none; }
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0; }
+
+textarea {
+  overflow: auto;
+  vertical-align: top;
+  resize: vertical; }
+
+/*
+
+    SITEWIDE LAYOUT ELEMENTS
+    ========================
+
+    Top level layout elements go in here, if you're building a module or page
+    element of some sort, split it out into its own scss file and update
+    styles.scss to import it.
+
+*/
+body {
+  padding: 0;
+  margin: 0 auto;
+  width: 100%; }
+
+ul, ol {
+  margin: 0 0 1.5em 1.5em; }
+
+li > ul,
+li > ol {
+  margin-bottom: 0; }
+
+img,
+a img {
+  -ms-interpolation-mode: bicubic;
+  max-width: 100%;
+  min-height: auto;
+  vertical-align: middle; }
